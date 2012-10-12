@@ -1,20 +1,22 @@
 package com.slidingmenu.lib.app;
 
-import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ListView;
 
+import com.actionbarsherlock.app.SherlockListActivity;
 import com.slidingmenu.lib.SlidingMenu;
 
-public class SlidingListActivity extends ListActivity implements SlidingActivityBase {
+public class SlidingListActivity extends SherlockListActivity implements SlidingActivityBase
+{
 
 	private SlidingActivityHelper mHelper;
 
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState)
+	{
 		super.onCreate(savedInstanceState);
 		mHelper = new SlidingActivityHelper(this);
 		mHelper.onCreate(savedInstanceState);
@@ -24,13 +26,15 @@ public class SlidingListActivity extends ListActivity implements SlidingActivity
 	}
 
 	@Override
-	public void onPostCreate(Bundle savedInstanceState) {
+	public void onPostCreate(Bundle savedInstanceState)
+	{
 		super.onPostCreate(savedInstanceState);
 		mHelper.onPostCreate(savedInstanceState);
 	}
 
 	@Override
-	public View findViewById(int id) {
+	public View findViewById(int id)
+	{
 		View v = super.findViewById(id);
 		if (v != null)
 			return v;
@@ -38,57 +42,70 @@ public class SlidingListActivity extends ListActivity implements SlidingActivity
 	}
 
 	@Override
-	public void setContentView(int id) {
+	public void setContentView(int id)
+	{
 		setContentView(getLayoutInflater().inflate(id, null));
 	}
 
 	@Override
-	public void setContentView(View v) {
+	public void setContentView(View v)
+	{
 		setContentView(v, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 	}
 
 	@Override
-	public void setContentView(View v, LayoutParams params) {
+	public void setContentView(View v, LayoutParams params)
+	{
 		super.setContentView(v, params);
 		mHelper.registerAboveContentView(v, params);
 	}
 
-	public void setBehindContentView(int id) {
+	public void setBehindContentView(int id)
+	{
 		setBehindContentView(getLayoutInflater().inflate(id, null));
 	}
 
-	public void setBehindContentView(View v) {
+	public void setBehindContentView(View v)
+	{
 		setBehindContentView(v, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 	}
 
-	public void setBehindContentView(View v, LayoutParams params) {
+	public void setBehindContentView(View v, LayoutParams params)
+	{
 		mHelper.setBehindContentView(v, params);
 	}
 
-	public SlidingMenu getSlidingMenu() {
+	public SlidingMenu getSlidingMenu()
+	{
 		return mHelper.getSlidingMenu();
 	}
 
-	public void toggle() {
+	public void toggle()
+	{
 		mHelper.toggle();
 	}
 
-	public void showAbove() {
+	public void showAbove()
+	{
 		mHelper.showAbove();
 	}
 
-	public void showBehind() {
+	public void showBehind()
+	{
 		mHelper.showBehind();
 	}
 
-	public void setSlidingActionBarEnabled(boolean b) {
+	public void setSlidingActionBarEnabled(boolean b)
+	{
 		mHelper.setSlidingActionBarEnabled(b);
 	}
 
 	@Override
-	public boolean onKeyUp(int keyCode, KeyEvent event) {
+	public boolean onKeyUp(int keyCode, KeyEvent event)
+	{
 		boolean b = mHelper.onKeyUp(keyCode, event);
-		if (b) return b;
+		if (b)
+			return b;
 		return super.onKeyUp(keyCode, event);
 	}
 
