@@ -4,12 +4,11 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.ListView;
 
-import com.actionbarsherlock.app.SherlockListActivity;
+import com.google.android.maps.MapActivity;
 import com.slidingmenu.lib.SlidingMenu;
 
-public class SlidingListActivity extends SherlockListActivity implements SlidingActivityBase
+public abstract class SlidingMapActivity extends MapActivity
 {
 
 	private SlidingActivityHelper mHelper;
@@ -20,9 +19,6 @@ public class SlidingListActivity extends SherlockListActivity implements Sliding
 		super.onCreate(savedInstanceState);
 		mHelper = new SlidingActivityHelper(this);
 		mHelper.onCreate(savedInstanceState);
-		ListView listView = new ListView(this);
-		listView.setId(android.R.id.list);
-		setContentView(listView);
 	}
 
 	@Override
@@ -41,18 +37,6 @@ public class SlidingListActivity extends SherlockListActivity implements Sliding
 		return mHelper.findViewById(id);
 	}
 
-	/* (non-Javadoc)
-	 * @see android.app.Activity#onSaveInstanceState(android.os.Bundle)
-	 */
-	@Override
-	protected void onSaveInstanceState(Bundle outState) {
-		super.onSaveInstanceState(outState);
-		mHelper.onSaveInstanceState(outState);
-	}
-
-	/* (non-Javadoc)
-	 * @see android.app.Activity#setContentView(int)
-	 */
 	@Override
 	public void setContentView(int id)
 	{
@@ -97,32 +81,18 @@ public class SlidingListActivity extends SherlockListActivity implements Sliding
 		mHelper.toggle();
 	}
 
-	/* (non-Javadoc)
-	 * @see com.slidingmenu.lib.app.SlidingActivityBase#showAbove()
-	 */
-	public void showContent() {
-		mHelper.showContent();
+	public void showAbove()
+	{
+		mHelper.showAbove();
 	}
 
-	/* (non-Javadoc)
-	 * @see com.slidingmenu.lib.app.SlidingActivityBase#showBehind()
-	 */
-	public void showMenu() {
-		mHelper.showMenu();
-	}
-	
-	/*
-	 * (non-Javadoc)
-	 * @see com.slidingmenu.lib.app.SlidingActivityBase#showSecondaryMenu()
-	 */
-	public void showSecondaryMenu() {
-		mHelper.showSecondaryMenu();
+	public void showBehind()
+	{
+		mHelper.showBehind();
 	}
 
-	/* (non-Javadoc)
-	 * @see com.slidingmenu.lib.app.SlidingActivityBase#setSlidingActionBarEnabled(boolean)
-	 */
-	public void setSlidingActionBarEnabled(boolean b) {
+	public void setSlidingActionBarEnabled(boolean b)
+	{
 		mHelper.setSlidingActionBarEnabled(b);
 	}
 
