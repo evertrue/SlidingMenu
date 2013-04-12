@@ -81,14 +81,14 @@ public abstract class SlidingMapActivity extends MapActivity
 		mHelper.toggle();
 	}
 
-	public void showAbove()
+	public void showContent()
 	{
-		mHelper.showAbove();
+		mHelper.showContent();
 	}
 
-	public void showBehind()
+	public void showMenu()
 	{
-		mHelper.showBehind();
+		mHelper.showMenu();
 	}
 
 	public void setSlidingActionBarEnabled(boolean b)
